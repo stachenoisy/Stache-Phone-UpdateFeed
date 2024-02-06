@@ -1,62 +1,168 @@
 <!DOCTYPE html>
 <html>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Update Feed</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@500;800&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
 
-<header>
-    Stache Phone | Update Feed
-</header>
-
-<body>
- 
-    <div class="ListWrapper">
-
-        <div class="ListItem">
-            <h1>Update 1.0.0</h1>
-            <p>Added the ability to send and receive messages</p>
-            <span id="TimeStamp">06.02.2024 / 16:42</span>
-        </div>
-        <div class="ListItem">
-            <h1>Update 1.0.0</h1>
-            <p>Added the ability to send and receive messages</p>
-            <span id="TimeStamp">06.02.2024 / 16:42</span>
-        </div>
-        <div class="ListItem">
-            <h1>Update 1.0.0</h1>
-            <p>Added the ability to send and receive messages</p>
-            <span id="TimeStamp">06.02.2024 / 16:42</span>
-        </div>
-        <div class="ListItem">
-            <h1>Update 1.0.0</h1>
-            <p>Added the ability to send and receive messages</p>
-        </div>
-        <div class="ListItem">
-            <h1>Update 1.0.0</h1>
-            <p>Added the ability to send and receive messages</p>
-        </div>
-        <div class="ListItem">
-            <h1>Update 1.0.0</h1>
-            <p>Added the ability to send and receive messages</p>
-        </div>
-        <div class="ListItem">
-            <h1>Update 1.0.0</h1>
-            <p>Added the ability to send and receive messages</p>
-        </div>
-        <div class="ListItem">
-            <h1>Update 1.0.0</h1>
-            <p>Added the ability to send and receive messages</p>
-        </div>
-
+<body onload="LoadItems()">
+    <header>
+        <h1>Stache Phone | Update Feed</h1>
+    </header>
+    <div class="content">
+        <!-- <div class="update">
+            <h2>Title: Example Update</h2>
+            <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur leo ac ipsum molestie, id malesuada libero hendrerit. Donec eget nisi risus. </p>
+            <p>Changed Files: file1.txt, file2.css</p>
+            <p>Update Date: February 6, 2024</p>
+        </div> -->
     </div>
-
 </body>
 
 </html>
 
+<script>
+    let items = [
+        {
+            id: 2,
+            title: "Update 1.0.1",
+            description: "Bugs and fixes from initial feedback have been implemented. Design improvements and Enhancements were made.",
+            changed: "Config.js, [Language Files]",
+            timestamp: "06.02.2024 / 16:42"
+        },
+        {
+            id: 1,
+            title: "Update 1.0.0",
+            description: "The first version of the phone has been released.",
+            changed: null,
+            timestamp: "05.02.2024 / 12:00"
+        }
+    ];
+
+    function LoadItems() {
+        let ListWrapper = document.querySelector(".content");
+
+        items.sort((a, b) => {
+            return b.id - a.id;
+        });
+
+        // Test
+        // for (let index = 0; index < 20; index++) {
+        //     items.push(items[0]);
+        // }
+
+        for (let i = 0; i < items.length; i++) {
+            let item = items[i];
+            let ListItem = document.createElement("div");
+            ListItem.classList.add("update");
+
+            if (item.changed) {
+                ListItem.innerHTML = `
+                    <h2>${item.title}</h2>
+                    <p><strong>Description:</strong> ${item.description}</p>
+                    <p><strong>Changed Files:</strong> ${item.changed}</p>
+                    <br>
+                    <p id="TimeStamp"><strong>Update Date:</strong> ${item.timestamp}</p>
+                `;
+            } else {
+                ListItem.innerHTML = `
+                    <h2>${item.title}</h2>
+                    <p><strong>Description:</strong> ${item.description}</p>
+                    <br>
+                    <p id="TimeStamp"><strong>Update Date:</strong> ${item.timestamp}</p>
+                `;
+            }
+
+            if (i === 0) {
+                let indicator = document.createElement("div");
+                indicator.classList.add("indicator");
+                ListItem.appendChild(indicator);
+            }
+
+            ListWrapper.appendChild(ListItem);
+        }
+    }
+
+</script>
+
 <style>
+
+::-webkit-scrollbar {
+    width: 3px;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #4CAF50;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+    background-color: #B2BEBF;
+    border-radius: 10px;
+}
+
+@keyframes blink {
+    from { 
+        opacity: 1; 
+        scale: 1.2;
+    }
+    to { 
+        opacity: 0.3; 
+        scale: 1;
+    }
+}
+
+.indicator {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    /* background-color: #4CAF50; */
+    background-color: #e34646;
+    border-radius: 50%;
+    animation: blink 1s infinite alternate;
+    right: 0;
+    margin-right: 35px;
+    margin-top: -140px;
+    box-shadow: 0 0 10px red;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.content {
+    padding: 20px;
+}
+
+.update {
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.update h2 {
+    color: #4CAF50;
+}
+
+.update p {
+    margin: 5px 0;
+}
+
+</style>
+
+<!-- <style>
     header {
         background-color: #BD2A2E;
         padding: 20px;
@@ -105,12 +211,13 @@
     }
 
     div.ListWrapper .ListItem {
-        background-color: #486966;
+        background-color: #494949f7;
         width: 50vw;
         margin: 10px;
         padding: 10px;
         border-radius: 10px;
         box-shadow: 0px 0px 10px 0px #0000007d;
+        border: 2px solid #c0d5d7;
     }
 
     div.ListWrapper .ListItem h1 {
@@ -119,16 +226,16 @@
     }
 
     div.ListWrapper .ListItem p {
-        color: #afafaf;
+        color: #dbdbdb;
         font-family: 'Noto Sans JP', sans-serif;
         /* user-select: none; */
     }
     
-    div.ListWrapper .ListItem .TimeStamp {
+    div.ListWrapper .ListItem #TimeStamp {
         color: white;
         font-weight: bold;
         font-family: monospace;
         user-select: none;
     }
 
-</style>
+</style> -->
