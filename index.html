@@ -1,42 +1,134 @@
 <!DOCTYPE html>
 <html>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@500;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+
 <header>
     Stache Phone | Update Feed
 </header>
 
 <body>
-    <h1>Hello World</h1>
-    <p>I'm hosted with GitHub Pages.</p>
+ 
+    <div class="ListWrapper">
+
+        <div class="ListItem">
+            <h1>Update 1.0.0</h1>
+            <p>Added the ability to send and receive messages</p>
+            <span id="TimeStamp">06.02.2024 / 16:42</span>
+        </div>
+        <div class="ListItem">
+            <h1>Update 1.0.0</h1>
+            <p>Added the ability to send and receive messages</p>
+            <span id="TimeStamp">06.02.2024 / 16:42</span>
+        </div>
+        <div class="ListItem">
+            <h1>Update 1.0.0</h1>
+            <p>Added the ability to send and receive messages</p>
+            <span id="TimeStamp">06.02.2024 / 16:42</span>
+        </div>
+        <div class="ListItem">
+            <h1>Update 1.0.0</h1>
+            <p>Added the ability to send and receive messages</p>
+        </div>
+        <div class="ListItem">
+            <h1>Update 1.0.0</h1>
+            <p>Added the ability to send and receive messages</p>
+        </div>
+        <div class="ListItem">
+            <h1>Update 1.0.0</h1>
+            <p>Added the ability to send and receive messages</p>
+        </div>
+        <div class="ListItem">
+            <h1>Update 1.0.0</h1>
+            <p>Added the ability to send and receive messages</p>
+        </div>
+        <div class="ListItem">
+            <h1>Update 1.0.0</h1>
+            <p>Added the ability to send and receive messages</p>
+        </div>
+
+    </div>
+
 </body>
 
 </html>
 
 <style>
     header {
-        background-color: #f2f2f2;
+        background-color: #BD2A2E;
         padding: 20px;
         text-align: center;
-        font-size: 20px;
         width: 100%;
         position: fixed;
         top: 0;
         height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 27px;
+        font-family: 'Noto Serif', serif;
+        font-weight: 900;
+        user-select: none;
+        border-bottom: 5px solid #B2BEBF;
+    }
+
+    ::-webkit-scrollbar {
+        width: 3px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background-color: #BD2A2E;
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-track {
+        background-color: #B2BEBF;
+        border-radius: 10px;
     }
 
     body {
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
+        background-color: #889C9B;
     }
 
-    h1 {
-        text-align: center;
-        margin-top: 50px;
+    div.ListWrapper {
+        width: -webkit-fill-available;
+        height: -webkit-fill-available;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 100px;
     }
 
-    p {
-        text-align: center;
-        margin-top: 20px;
+    div.ListWrapper .ListItem {
+        background-color: #486966;
+        width: 50vw;
+        margin: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px 0px #0000007d;
     }
+
+    div.ListWrapper .ListItem h1 {
+        color: #dddddd;
+        user-select: none;
+    }
+
+    div.ListWrapper .ListItem p {
+        color: #afafaf;
+        font-family: 'Noto Sans JP', sans-serif;
+        /* user-select: none; */
+    }
+    
+    div.ListWrapper .ListItem .TimeStamp {
+        color: white;
+        font-weight: bold;
+        font-family: monospace;
+        user-select: none;
+    }
+
 </style>
