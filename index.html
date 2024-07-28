@@ -24,7 +24,7 @@
 
 </html>
 
-<script>
+<script>    
     let items = [
         {
             id: 18,
@@ -161,7 +161,13 @@
         }
     ];
 
+    let ActiveFocusedElement = null;
+
     function LoadItems() {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const viewid = urlParams.get('id');
+        
         let ListWrapper = document.querySelector(".content");
 
         items.sort((a, b) => {
@@ -195,6 +201,11 @@
                 `;
             }
 
+            if (viewid && item.id === Number(viewid)) {
+                ListItem.classList.add("ActiveView");
+                ActiveFocusedElement = ListItem;
+            }
+
             if (i === 0) {
                 let indicator = document.createElement("div");
                 indicator.classList.add("indicator");
@@ -203,7 +214,14 @@
 
             ListWrapper.appendChild(ListItem);
         }
+
+        if (ActiveFocusedElement) {
+            setTimeout(() => {
+                ActiveFocusedElement.scrollIntoView({ behavior: "smooth", block: "center" });
+            }, 1500);
+        }
     }
+
 
 </script>
 
@@ -277,6 +295,23 @@ header {
 
 .update p {
     margin: 5px 0;
+}
+
+.ActiveView {
+    background-color: #e34646;
+    color: white;
+    animation: blink 1s infinite alternate;
+}
+
+@keyframes blink {
+    from { 
+        opacity: 0.6; 
+        scale: 0.98;
+    }
+    to { 
+        opacity: 1; 
+        scale: 1;
+    }
 }
 
 </style>
